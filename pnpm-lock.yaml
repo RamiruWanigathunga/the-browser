@@ -5,8 +5,8 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  expo-modules-core@3.0.30: 337a95f8c8d761424dcab431b793da289b11d26d5748341e27ea6b66b3430719
-  react-native-macos@0.81.9: 46949ea9063fd6d44fb479a672d149a9d17b2c6b4063ae9a23894e65c200306c
+  expo-modules-core@3.0.30: 7c40c5c6edcce1d1c8e33b5bfdf76937b4159594bccfec07e6d6b020d73f856c
+  react-native-macos@0.81.9: 123a353ac3aeff4cf533e95ff442aa68ad65f099c22b8ed6b809c933dbe5bf38
 
 importers:
 
@@ -21,15 +21,15 @@ importers:
 
   apps/browser:
     dependencies:
-      '@medusa/medusacore':
-        specifier: workspace:*
-        version: link:../../packages/medusacore
       '@medusa/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@medusa/import':
         specifier: workspace:*
         version: link:../../packages/import
+      '@medusa/medusacore':
+        specifier: workspace:*
+        version: link:../../packages/medusacore
       '@medusa/shaders':
         specifier: workspace:*
         version: link:../../packages/shaders
@@ -44,7 +44,7 @@ importers:
         version: 54.0.37(@babel/core@7.29.7)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)(typescript@5.9.3)
       expo-modules-core:
         specifier: ~3.0.29
-        version: 3.0.30(patch_hash=337a95f8c8d761424dcab431b793da289b11d26d5748341e27ea6b66b3430719)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
+        version: 3.0.30(patch_hash=7c40c5c6edcce1d1c8e33b5bfdf76937b4159594bccfec07e6d6b020d73f856c)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
       react:
         specifier: 19.1.4
         version: 19.1.4
@@ -53,7 +53,7 @@ importers:
         version: 0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4)
       react-native-macos:
         specifier: 0.81.9
-        version: 0.81.9(patch_hash=46949ea9063fd6d44fb479a672d149a9d17b2c6b4063ae9a23894e65c200306c)(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
+        version: 0.81.9(patch_hash=123a353ac3aeff4cf533e95ff442aa68ad65f099c22b8ed6b809c933dbe5bf38)(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
       zustand:
         specifier: ^5.0.8
         version: 5.0.15(@types/react@19.1.17)(react@19.1.4)
@@ -88,15 +88,15 @@ importers:
 
   apps/demo:
     dependencies:
-      '@medusa/medusacore':
-        specifier: workspace:*
-        version: link:../../packages/medusacore
       '@medusa/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@medusa/import':
         specifier: workspace:*
         version: link:../../packages/import
+      '@medusa/medusacore':
+        specifier: workspace:*
+        version: link:../../packages/medusacore
       '@medusa/shaders':
         specifier: workspace:*
         version: link:../../packages/shaders
@@ -165,12 +165,6 @@ importers:
         specifier: ^7.1.9
         version: 7.3.7(@types/node@24.13.6)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.1)
 
-  packages/medusacore:
-    dependencies:
-      '@medusa/core':
-        specifier: workspace:*
-        version: link:../core
-
   packages/core:
     devDependencies:
       '@types/node':
@@ -178,6 +172,12 @@ importers:
         version: 24.13.6
 
   packages/import: {}
+
+  packages/medusacore:
+    dependencies:
+      '@medusa/core':
+        specifier: workspace:*
+        version: link:../core
 
   packages/shaders: {}
 
@@ -6284,7 +6284,7 @@ snapshots:
       require-from-string: 2.0.2
       resolve-from: 5.0.0
 
-  expo-modules-core@3.0.30(patch_hash=337a95f8c8d761424dcab431b793da289b11d26d5748341e27ea6b66b3430719)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4):
+  expo-modules-core@3.0.30(patch_hash=7c40c5c6edcce1d1c8e33b5bfdf76937b4159594bccfec07e6d6b020d73f856c)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4):
     dependencies:
       invariant: 2.2.4
       react: 19.1.4
@@ -6311,7 +6311,7 @@ snapshots:
       expo-font: 14.0.12(expo@54.0.37(@babel/core@7.29.7)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)(typescript@5.9.3))(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
       expo-keep-awake: 15.0.8(expo@54.0.37(@babel/core@7.29.7)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)(typescript@5.9.3))(react@19.1.4)
       expo-modules-autolinking: 3.0.27
-      expo-modules-core: 3.0.30(patch_hash=337a95f8c8d761424dcab431b793da289b11d26d5748341e27ea6b66b3430719)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
+      expo-modules-core: 3.0.30(patch_hash=7c40c5c6edcce1d1c8e33b5bfdf76937b4159594bccfec07e6d6b020d73f856c)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
       pretty-format: 29.7.0
       react: 19.1.4
       react-native: 0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4)
@@ -7527,7 +7527,7 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-native-macos@0.81.9(patch_hash=46949ea9063fd6d44fb479a672d149a9d17b2c6b4063ae9a23894e65c200306c)(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4):
+  react-native-macos@0.81.9(patch_hash=123a353ac3aeff4cf533e95ff442aa68ad65f099c22b8ed6b809c933dbe5bf38)(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native-macos/virtualized-lists': 0.81.9(@types/react@19.1.17)(react-native@0.81.6(@babel/core@7.29.7)(@react-native-community/cli@20.2.0(typescript@5.9.3))(@react-native/metro-config@0.81.6(@babel/core@7.29.7))(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
