@@ -9,7 +9,7 @@ const shims = here("./src/shims/");
 
 const realPackages: Record<string, string> = {
   shell: `${repo}packages/shell/src/index.tsx`,
-  ardiacore: `${repo}packages/ardiacore/src/index.ts`,
+  medusacore: `${repo}packages/medusacore/src/index.ts`,
   shaders: `${repo}packages/shaders/src/index.tsx`,
   sync: `${repo}packages/sync/src/index.ts`,
   import: `${repo}packages/import/src/index.ts`,
@@ -20,7 +20,7 @@ const ASSET = /\.(png|jpe?g|gif|webp|svg)$/;
 function commonJsRequires(): Plugin {
   const scope = [`${repo}apps/browser/src/`, `${repo}packages/`];
   return {
-    name: "ardia-demo:requires",
+    name: "medusa-demo:requires",
     enforce: "pre",
     transform(code, id) {
       if (!/\.(t|j)sx?$/.test(id) || !scope.some((dir) => id.startsWith(dir)) || !code.includes("require(")) return null;
@@ -45,15 +45,15 @@ const LAZY_COMPONENTS: Record<string, string[]> = {
   [`${repo}apps/browser/src/components/extensions/SidePanel.tsx`]: ["ExtensionSidePanel"],
   [`${repo}apps/browser/src/components/bookmarks/BookmarkDialog.tsx`]: ["BookmarkDialog"],
   [`${repo}apps/browser/src/components/bookmarks/EditBookmarkDialog.tsx`]: ["EditBookmarkDialog"],
-  [`${repo}apps/browser/src/components/littleArdia/LittleArdiaWindow.tsx`]: ["LittleArdiaWindow"],
+  [`${repo}apps/browser/src/components/littleMedusa/LittleMedusaWindow.tsx`]: ["LittleMedusaWindow"],
 };
 
-const LAZY_PREFIX = "\0ardia-lazy:";
-const EAGER_QUERY = "?ardia-eager";
+const LAZY_PREFIX = "\0medusa-lazy:";
+const EAGER_QUERY = "?medusa-eager";
 
 function lazyComponents(): Plugin {
   return {
-    name: "ardia-demo:lazy-components",
+    name: "medusa-demo:lazy-components",
     enforce: "pre",
     async resolveId(source, importer, options) {
       if (!importer || source.endsWith(EAGER_QUERY) || importer.startsWith(LAZY_PREFIX)) return null;
@@ -78,7 +78,7 @@ function lazyComponents(): Plugin {
   };
 }
 
-const analyze = !!process.env.ARDIA_DEMO_ANALYZE;
+const analyze = !!process.env.MEDUSA_DEMO_ANALYZE;
 
 export default defineConfig({
   plugins: [
@@ -98,8 +98,8 @@ export default defineConfig({
       { find: /^react-native\/Libraries\/Animated\/useAnimatedProps$/, replacement: "react-native-web/dist/vendor/react-native/Animated/useAnimatedProps.js" },
       { find: /^react-native(-macos)?$/, replacement: `${shims}react-native.tsx` },
       { find: /^expo-modules-core$/, replacement: `${shims}expo-modules-core.ts` },
-      { find: /^@ardia\/(shell|ardiacore|shaders|sync|import)$/, replacement: `${shims}$1.tsx` },
-      ...Object.entries(realPackages).map(([name, path]) => ({ find: new RegExp(`^@ardia-real/${name}$`), replacement: path })),
+      { find: /^@medusa\/(shell|medusacore|shaders|sync|import)$/, replacement: `${shims}$1.tsx` },
+      ...Object.entries(realPackages).map(([name, path]) => ({ find: new RegExp(`^@medusa-real/${name}$`), replacement: path })),
     ],
   },
   optimizeDeps: {

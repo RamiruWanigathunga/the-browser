@@ -9,7 +9,7 @@ const folder = new Map();
 let onWrite = null;
 let ids = 0;
 globalThis.acTestNativeModules = {
-  ArdiaSync: {
+  MedusaSync: {
     newDeviceId: () => `dev${++ids}`,
     deviceName: () => "Test Mac",
     createPhrase: async () => true,
@@ -35,7 +35,7 @@ globalThis.acTestNativeModules = {
   },
 };
 
-const shell = await import("@ardia/shell");
+const shell = await import("@medusa/shell");
 const { useBrowser } = await import("../store/browser.ts");
 const S = () => useBrowser.getState();
 const reset = () => (S().hydrate({}), useBrowser.setState({ bookmarksReady: { default: true } }));

@@ -1,5 +1,5 @@
-import { DIA_SPECTRUM, PowerUp } from "@ardia/shaders";
-import { playIntroMusic, setIntroMusicMuted, stopIntroMusic, Symbol, type IntroMusicCues } from "@ardia/shell";
+import { DIA_SPECTRUM, PowerUp } from "@medusa/shaders";
+import { playIntroMusic, setIntroMusicMuted, stopIntroMusic, Symbol, type IntroMusicCues } from "@medusa/shell";
 import { useEffect, useRef, useState } from "react";
 import { Animated, Easing, Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useTheme } from "../../lib/theme";
@@ -7,7 +7,7 @@ import { useHover } from "../primitives";
 import { introMusicMuted, saveIntroMusicMuted } from "./state";
 import { SecondaryButton, useOnboardingColors } from "./ui";
 
-const WORDMARK = "Ardia";
+const WORDMARK = "Medusa";
 const ICON = require("../../../assets/app-icon.png");
 
 const LETTER = 0.52;

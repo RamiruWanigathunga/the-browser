@@ -8,8 +8,8 @@ public final class AppUpdater: NSObject {
 
   static var feedOverride: String? {
     let env = ProcessInfo.processInfo.environment
-    if let feed = env["ARDIA_UPDATE_FEED_URL"] ?? UserDefaults.standard.string(forKey: "ACUpdateFeedURL") { return feed }
-    return env["ARDIA_BACKGROUND"] == "1" ? "https://github.com/mantrakp04/ardia/releases/latest/download/appcast.xml" : nil
+    if let feed = env["MEDUSA_UPDATE_FEED_URL"] ?? UserDefaults.standard.string(forKey: "ACUpdateFeedURL") { return feed }
+    return env["MEDUSA_BACKGROUND"] == "1" ? "https://github.com/mantrakp04/medusa/releases/latest/download/appcast.xml" : nil
   }
 
   public static let channels = ["stable", "nightly"]
@@ -46,7 +46,7 @@ public final class AppUpdater: NSObject {
   }
 
   private static var isOff: Bool {
-    ACIsolatedDataDirectory() != nil && ProcessInfo.processInfo.environment["ARDIA_UPDATE_FEED_URL"] == nil
+    ACIsolatedDataDirectory() != nil && ProcessInfo.processInfo.environment["MEDUSA_UPDATE_FEED_URL"] == nil
   }
 
   #if canImport(Sparkle)
@@ -83,7 +83,7 @@ public final class AppUpdater: NSObject {
     do {
       try controller.updater.start()
     } catch {
-      NSLog("Ardia: couldn't start the updater: \(error.localizedDescription)")
+      NSLog("Medusa: couldn't start the updater: \(error.localizedDescription)")
     }
     NotificationCenter.default.addObserver(self, selector: #selector(fullScreenChanged), name: NSWindow.didExitFullScreenNotification, object: nil)
     #endif
@@ -92,8 +92,8 @@ public final class AppUpdater: NSObject {
   @objc public func checkForUpdates(_ sender: Any?) {
     #if canImport(Sparkle)
     guard isConfigured else {
-      if ProcessInfo.processInfo.environment["ARDIA_BACKGROUND"] == "1" {
-        return NSLog("Ardia: update checks are off in this instance")
+      if ProcessInfo.processInfo.environment["MEDUSA_BACKGROUND"] == "1" {
+        return NSLog("Medusa: update checks are off in this instance")
       }
       return showNotSetUp()
     }
@@ -178,11 +178,11 @@ extension AppUpdater: SPUUpdaterDelegate {
   }
 
   public func updater(_ updater: SPUUpdater, didFindValidUpdate item: SUAppcastItem) {
-    NSLog("Ardia: update found: \(item.displayVersionString) (build \(item.versionString)\(item.channel.map { ", \($0)" } ?? "")) on the \(channel) channel")
+    NSLog("Medusa: update found: \(item.displayVersionString) (build \(item.versionString)\(item.channel.map { ", \($0)" } ?? "")) on the \(channel) channel")
   }
 
   public func updaterDidNotFindUpdate(_ updater: SPUUpdater, error: Error) {
-    NSLog("Ardia: no update on the \(channel) channel")
+    NSLog("Medusa: no update on the \(channel) channel")
   }
 
   public func feedParameters(for updater: SPUUpdater, sendingSystemProfile sendingProfile: Bool) -> [[String: String]] {
@@ -211,7 +211,7 @@ enum KillSwitch {
     environment: [String: String] = ProcessInfo.processInfo.environment,
     cache: () -> String? = { DocumentStore.read(cacheDocument) }
   ) -> Bool {
-    for part in (environment["ARDIA_SWITCHES"] ?? "").split(separator: ",") {
+    for part in (environment["MEDUSA_SWITCHES"] ?? "").split(separator: ",") {
       let pair = part.split(separator: "=", maxSplits: 1).map { $0.trimmingCharacters(in: .whitespaces) }
       guard pair.count == 2, pair[0] == name else { continue }
       if ["off", "0", "false"].contains(pair[1]) { return false }
@@ -238,8 +238,8 @@ enum UpdatePrewarm {
     DispatchQueue.global(qos: .utility).async {
       let task = Process()
       task.executableURL = executable
-      var env = ProcessInfo.processInfo.environment.filter { !$0.key.hasPrefix("ARDIA_") && !$0.key.hasPrefix("DYLD_") }
-      env["ARDIA_PREWARM"] = "1"
+      var env = ProcessInfo.processInfo.environment.filter { !$0.key.hasPrefix("MEDUSA_") && !$0.key.hasPrefix("DYLD_") }
+      env["MEDUSA_PREWARM"] = "1"
       task.environment = env
       task.standardInput = FileHandle.nullDevice
       task.standardOutput = FileHandle.nullDevice
@@ -248,20 +248,20 @@ enum UpdatePrewarm {
       task.terminationHandler = { ended in
         DispatchQueue.main.async {
           if running == ended.processIdentifier { running = 0 }
-          NSLog("Ardia: prewarmed update \(version) in \(Int(Date().timeIntervalSince(began) * 1000)) ms (status \(ended.terminationStatus))")
+          NSLog("Medusa: prewarmed update \(version) in \(Int(Date().timeIntervalSince(began) * 1000)) ms (status \(ended.terminationStatus))")
         }
       }
       do {
         try task.run()
       } catch {
-        return NSLog("Ardia: couldn't prewarm update \(version): \(error.localizedDescription)")
+        return NSLog("Medusa: couldn't prewarm update \(version): \(error.localizedDescription)")
       }
       let pid = task.processIdentifier
       DispatchQueue.main.async {
         if task.isRunning { running = pid }
         DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
           guard running == pid, task.isRunning else { return }
-          NSLog("Ardia: update prewarm still running after \(Int(timeout)) s; stopping it")
+          NSLog("Medusa: update prewarm still running after \(Int(timeout)) s; stopping it")
           stop()
         }
       }

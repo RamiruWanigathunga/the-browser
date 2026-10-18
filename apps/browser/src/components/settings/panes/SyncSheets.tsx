@@ -1,5 +1,5 @@
-import { showMenu, Symbol } from "@ardia/shell";
-import { SyncNative, type FolderInfo } from "@ardia/sync";
+import { showMenu, Symbol } from "@medusa/shell";
+import { SyncNative, type FolderInfo } from "@medusa/sync";
 import { useEffect, useState, type ReactNode } from "react";
 import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTheme } from "../../../lib/theme";
@@ -203,7 +203,7 @@ function ConnectDeviceSheet() {
     <Sheet width={480} onClose={closeSettingsSheet}>
       <Title>Connect Another Device</Title>
       <Body>
-        On your other Mac, open Ardia › Settings › Sync and choose the same sync folder. Then click Enter Recovery Phrase and enter the 24 words
+        On your other Mac, open Medusa › Settings › Sync and choose the same sync folder. Then click Enter Recovery Phrase and enter the 24 words
         of your recovery phrase.
       </Body>
       <View style={{ flexDirection: "row", alignItems: "center", gap: 16, marginTop: 16 }}>

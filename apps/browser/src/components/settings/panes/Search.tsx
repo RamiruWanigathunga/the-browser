@@ -1,5 +1,5 @@
-import { engineHost, type SearchEngine } from "@ardia/core";
-import { Symbol } from "@ardia/shell";
+import { engineHost, type SearchEngine } from "@medusa/core";
+import { Symbol } from "@medusa/shell";
 import { useState } from "react";
 import { Text, View } from "react-native";
 import { useTheme } from "../../../lib/theme";
@@ -56,7 +56,7 @@ export function SearchPane() {
 
       {fromExtensions.length > 0 && (
         <>
-          <SectionHeader title="Extensions" description="Some extensions can add search engines to Ardia." />
+          <SectionHeader title="Extensions" description="Some extensions can add search engines to Medusa." />
           <Group>
             {fromExtensions.map((e) => (
               <EngineRow key={e.id} engine={e} selected={selectedId === e.id} locked={locked} />

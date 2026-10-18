@@ -1,4 +1,4 @@
-import type { SystemCalendar } from "@ardia/shell";
+import type { SystemCalendar } from "@medusa/shell";
 import { Linking, Text, View } from "react-native";
 import { useTheme } from "../../../lib/theme";
 import { connectCalendar, setCalendarHidden, useCalendar } from "../../../live/calendar";
@@ -32,7 +32,7 @@ export function CalendarPane() {
               : connected
                 ? `Connected · ${calendars.length === 1 ? "1 calendar" : `${calendars.length} calendars`}`
                 : denied
-                  ? "Ardia isn't allowed to read your calendars. Allow it in System Settings › Privacy & Security › Calendars."
+                  ? "Medusa isn't allowed to read your calendars. Allow it in System Settings › Privacy & Security › Calendars."
                   : "Not connected"
           }
         >

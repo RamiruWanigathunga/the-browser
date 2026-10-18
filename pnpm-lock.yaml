@@ -21,22 +21,22 @@ importers:
 
   apps/browser:
     dependencies:
-      '@ardia/ardiacore':
+      '@medusa/medusacore':
         specifier: workspace:*
-        version: link:../../packages/ardiacore
-      '@ardia/core':
+        version: link:../../packages/medusacore
+      '@medusa/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@ardia/import':
+      '@medusa/import':
         specifier: workspace:*
         version: link:../../packages/import
-      '@ardia/shaders':
+      '@medusa/shaders':
         specifier: workspace:*
         version: link:../../packages/shaders
-      '@ardia/shell':
+      '@medusa/shell':
         specifier: workspace:*
         version: link:../../packages/shell
-      '@ardia/sync':
+      '@medusa/sync':
         specifier: workspace:*
         version: link:../../packages/sync
       expo:
@@ -88,22 +88,22 @@ importers:
 
   apps/demo:
     dependencies:
-      '@ardia/ardiacore':
+      '@medusa/medusacore':
         specifier: workspace:*
-        version: link:../../packages/ardiacore
-      '@ardia/core':
+        version: link:../../packages/medusacore
+      '@medusa/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@ardia/import':
+      '@medusa/import':
         specifier: workspace:*
         version: link:../../packages/import
-      '@ardia/shaders':
+      '@medusa/shaders':
         specifier: workspace:*
         version: link:../../packages/shaders
-      '@ardia/shell':
+      '@medusa/shell':
         specifier: workspace:*
         version: link:../../packages/shell
-      '@ardia/sync':
+      '@medusa/sync':
         specifier: workspace:*
         version: link:../../packages/sync
       lucide-react:
@@ -165,9 +165,9 @@ importers:
         specifier: ^7.1.9
         version: 7.3.7(@types/node@24.13.6)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.1)
 
-  packages/ardiacore:
+  packages/medusacore:
     dependencies:
-      '@ardia/core':
+      '@medusa/core':
         specifier: workspace:*
         version: link:../core
 

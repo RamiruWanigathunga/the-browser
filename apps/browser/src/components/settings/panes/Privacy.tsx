@@ -20,8 +20,8 @@ import {
   type SiteSettings,
   type SiteSettingType,
   type SiteSettingValue,
-} from "@ardia/ardiacore";
-import { confirm } from "@ardia/shell";
+} from "@medusa/medusacore";
+import { confirm } from "@medusa/shell";
 import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import { useTheme } from "../../../lib/theme";
@@ -75,7 +75,7 @@ export function PrivacyPane() {
     if (!on && c === "ads") {
       const { confirmed } = await confirm({
         title: "Turn Off Ad Blocker?",
-        message: "Ardia's Ad Blocker hides ads so pages load faster and feel cleaner.",
+        message: "Medusa's Ad Blocker hides ads so pages load faster and feel cleaner.",
         confirmTitle: "Turn Off",
       });
       if (!confirmed) return;
@@ -167,7 +167,7 @@ function FilterListsSheet() {
       </ScrollView>
       <View style={{ flexDirection: "row", alignItems: "center", gap: 10, marginTop: 16 }}>
         <Text style={{ flex: 1, fontSize: 11.5, color: theme.textTertiary }}>
-          {blocker?.version ? `Blocking by uBlock Origin ${blocker.version}, included with Ardia. Its lists update on their own.` : ""}
+          {blocker?.version ? `Blocking by uBlock Origin ${blocker.version}, included with Medusa. Its lists update on their own.` : ""}
         </Text>
         <Button title="Done" kind="primary" onPress={closeSettingsSheet} />
       </View>

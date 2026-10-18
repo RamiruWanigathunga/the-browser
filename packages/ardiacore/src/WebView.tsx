@@ -1,4 +1,4 @@
-import { toAppUrl, toEngineUrl } from "@ardia/core";
+import { toAppUrl, toEngineUrl } from "@medusa/core";
 import { requireNativeViewManager } from "expo-modules-core";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import type { NativeSyntheticEvent, ViewProps } from "react-native";
@@ -321,7 +321,7 @@ type NativeHandle = Omit<
   discard(unload: boolean): Promise<DiscardOutcome>;
 };
 
-const NativeWebView = requireNativeViewManager<NativeProps>("ArdiaCEF");
+const NativeWebView = requireNativeViewManager<NativeProps>("MedusaCEF");
 
 const VIEW_RETRIES = 3;
 const isViewMissing = (error: unknown) =>

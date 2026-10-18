@@ -1,9 +1,9 @@
-import { keychainDelete, keychainGet, keychainSet, launchEnvironment } from "@ardia/shell";
+import { keychainDelete, keychainGet, keychainSet, launchEnvironment } from "@medusa/shell";
 import { LiveError, type LiveSourceId } from "./types";
 
 const mock = (() => {
   try {
-    return (typeof __DEV__ !== "undefined" && __DEV__ && launchEnvironment("ARDIA_LIVE_MOCK")) || null;
+    return (typeof __DEV__ !== "undefined" && __DEV__ && launchEnvironment("MEDUSA_LIVE_MOCK")) || null;
   } catch {
     return null;
   }

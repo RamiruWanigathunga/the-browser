@@ -9,7 +9,7 @@ import {
   type EngineInput,
   type ExtensionSearchEngine,
   type SearchEngine,
-} from "@ardia/core";
+} from "@medusa/core";
 import type { StateCreator } from "zustand";
 import type { BrowserState } from "./browser";
 
@@ -59,8 +59,8 @@ export type Settings = {
 
   shortcuts: Record<string, string[]>;
 
-  openLinksInLittleArdia: boolean;
-  littleArdiaSize: [number, number];
+  openLinksInLittleMedusa: boolean;
+  littleMedusaSize: [number, number];
 
   chosen?: string[];
   inferred?: string[];
@@ -106,8 +106,8 @@ export const DEFAULT_SETTINGS: Settings = {
   addressBar: "toolbar",
   defaultProfileId: DEFAULT_PROFILE_ID,
   shortcuts: {},
-  openLinksInLittleArdia: true,
-  littleArdiaSize: [900, 640],
+  openLinksInLittleMedusa: true,
+  littleMedusaSize: [900, 640],
 };
 
 const NO_CUSTOM_ENGINES: CustomSearchEngine[] = [];

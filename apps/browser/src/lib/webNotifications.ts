@@ -1,4 +1,4 @@
-import type { WebNotification } from "@ardia/ardiacore";
+import type { WebNotification } from "@medusa/medusacore";
 import {
   confirm,
   notificationPermission,
@@ -7,7 +7,7 @@ import {
   removeNotifications,
   requestNotificationPermission,
   type NotificationResponse,
-} from "@ardia/shell";
+} from "@medusa/shell";
 import { useBrowser } from "../store/browser";
 import { focus, switchToTab } from "./actions";
 import { webviews } from "./webviews";
@@ -89,8 +89,8 @@ export async function ensureNotificationPermission(windowId?: string): Promise<b
   if (asked) return false;
   asked = true;
   const { confirmed } = await confirm({
-    title: "Ardia Needs Notifications Permission",
-    message: "You need to open System Settings to give Ardia permission to show you Notifications.",
+    title: "Medusa Needs Notifications Permission",
+    message: "You need to open System Settings to give Medusa permission to show you Notifications.",
     confirmTitle: "Open System Settings",
     cancelTitle: "Not Now",
     windowId,

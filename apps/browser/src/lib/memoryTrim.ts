@@ -1,5 +1,5 @@
-import { inputIdleSeconds, trimEngineMemory } from "@ardia/ardiacore";
-import { killSwitchEnvironment } from "@ardia/shell";
+import { inputIdleSeconds, trimEngineMemory } from "@medusa/medusacore";
+import { killSwitchEnvironment } from "@medusa/shell";
 import { useBrowser } from "../store/browser";
 import { isQuitting } from "./native";
 
@@ -23,9 +23,9 @@ let started = false;
 
 export function startMemoryTrim() {
   if (started) return;
-  if (off("ARDIA_MEMORY_TRIM")) return;
-  const compactsHeap = !off("ARDIA_MEMORY_TRIM_HEAP") && typeof runtime.gc === "function" && heapSize() !== null;
-  const trimsEngine = !off("ARDIA_MEMORY_TRIM_ENGINE");
+  if (off("MEDUSA_MEMORY_TRIM")) return;
+  const compactsHeap = !off("MEDUSA_MEMORY_TRIM_HEAP") && typeof runtime.gc === "function" && heapSize() !== null;
+  const trimsEngine = !off("MEDUSA_MEMORY_TRIM_ENGINE");
   if (!compactsHeap && !trimsEngine) return;
   started = true;
 

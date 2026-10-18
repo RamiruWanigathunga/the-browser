@@ -1,4 +1,4 @@
-import { killSwitchEnvironment, readDocument, writeDocument } from "@ardia/shell";
+import { killSwitchEnvironment, readDocument, writeDocument } from "@medusa/shell";
 
 type SwitchDef = {
   about: string;
@@ -63,8 +63,8 @@ export const SWITCHES = {
 type SwitchName = keyof typeof SWITCHES;
 
 const CACHE_DOC = "switches-cache.json";
-const SWITCHES_URL = "https://ardia.dev/switches.json";
-const SWITCHES_ENV = "ARDIA_SWITCHES";
+const SWITCHES_URL = "https://medusa.dev/switches.json";
+const SWITCHES_ENV = "MEDUSA_SWITCHES";
 const FETCH_TIMEOUT_MS = 5000;
 const MAX_BYTES = 4096;
 

@@ -1,5 +1,5 @@
-import { cliControlStatus, onCliControlChanged, setCliActiveTab, setCliControl, type CliControlStatus } from "@ardia/ardiacore";
-import { installCli, installedCliVersion, onCliInstallLine, readDocument, systemInfo, writeDocument, type CliInstallResult } from "@ardia/shell";
+import { cliControlStatus, onCliControlChanged, setCliActiveTab, setCliControl, type CliControlStatus } from "@medusa/medusacore";
+import { installCli, installedCliVersion, onCliInstallLine, readDocument, systemInfo, writeDocument, type CliInstallResult } from "@medusa/shell";
 import { create } from "zustand";
 import { useBrowser, type BrowserState } from "../store/browser";
 import { activeTabId } from "../store/model";
@@ -7,7 +7,7 @@ import { pageOf, usePages } from "../components/layout/pageState";
 import { isInternalTab } from "../components/pages";
 import { afterFirstWindow } from "./afterFirstWindow";
 
-const DOC = "ardia-cli.json";
+const DOC = "medusa-cli.json";
 const UPGRADE_DELAY_MS = 8000;
 
 type Saved = { binPath?: string | null; version?: string | null; error?: string | null; at?: number };
